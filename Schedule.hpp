@@ -2,6 +2,7 @@
 #define SCHEDULE_HPP
 
 #include <string>
+#include <map>
 
 using namespace std;
 
@@ -17,7 +18,7 @@ public:
 
     string setSchedule(const string& eventID, const string& date, const string& startTime, const string& endTime);
     bool updateSchedule(const string& scheduleID, const string& date, const string& startTime, const string& endTime);
-    Schedule getSchedule(const string& scheduleID) const;
+    map<string, string> getScheduleDetails() const;
 };
 
 #endif
