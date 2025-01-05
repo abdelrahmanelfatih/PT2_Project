@@ -2,6 +2,7 @@
 #define EVENT_COORDINATOR_H
 
 #include <string>
+#include <map>
 class EventCoordinator{
     private:
         std::string coordinatorID;
@@ -10,7 +11,7 @@ class EventCoordinator{
     public:
     EventCoordinator();
     void assignCoordinator(const std::string& name, const std::string& email);
-    EventCoordinator getCoordinatorDetails(const std::string& coordinatorID) const;
+    std::map<std::string, std::string> getCoordinatorDetails() const;
 
 };
 

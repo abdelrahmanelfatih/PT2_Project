@@ -1,5 +1,6 @@
 #include "EVENT_COORDINATOR.h"
 #include <iostream>
+#include <map>
 
 EventCoordinator::EventCoordinator() : coordinatorID(""), name(""), email("") {}
 
@@ -14,10 +15,10 @@ void EventCoordinator::assignCoordinator(const std::string& name, const std::str
 }
 
 
-EventCoordinator EventCoordinator::getCoordinatorDetails(const std::string& coordinatorID) const {
-    if (this->coordinatorID == coordinatorID) {
-        return *this;
-    } else {
-        throw std::invalid_argument("Coordinator ID not found.");
-    }
+std::map<std::string, std::string> EventCoordinator::getCoordinatorDetails() const {
+    return {
+        {"Coordinator ID", coordinatorID},
+        {"Name", name},
+        {"Email", email}
+    };
 }
