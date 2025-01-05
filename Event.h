@@ -25,7 +25,9 @@ public:
     //Constructor
     Event(string id, string name, string desc, string catagory): 
     eventID(id), name(name), description(desc), catagory(catagory) {}
-    createEvent()
+    void createEvent();
+    void updateEventDetails(string id, string name, string desc, string catagory);
+    Event getEventDetails(string id);
 };
 
 
