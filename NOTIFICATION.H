@@ -1,23 +1,25 @@
 #ifndef NOTIFICATION_H
 #define NOTIFICATION_H
 
-#include <iostream>
-#include <iomanip>
-#include <fstream>
 #include <string>
-
 using namespace std;
 
-class Notification 
-{
-    private:
+class Notification {
+private:
     string notificationID;
     string message;
-    string timestamp;
+    string timeStamp;
 
-    public:
+public:
+    Notification(const string& id, const string& msg, const string& time);
+
     string sendMessage() const;
-    void setMessage(string& msg);
+    void setMessage(const string& msg);
+
+    // Getters
+    string getNotificationID() const;
+    string getMessage() const;
+    string getTimeStamp() const;
 };
 
-#endif
+#endif 
