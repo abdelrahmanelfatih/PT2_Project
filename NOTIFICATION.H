@@ -19,3 +19,5 @@ class Notification
     string sendMessage() const;
     void setMessage(string& msg);
 };
+
+#endif

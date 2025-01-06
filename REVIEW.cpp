@@ -1,6 +1,6 @@
 #include "Review.h"
 
-const string& Review::submitReview(string& id, string& name, int rate, string& comm) const {
+const string Review::submitReview(string& id, string& name, int rate, string& comm) const {
   
     return "Review Submitted!"; 
 }

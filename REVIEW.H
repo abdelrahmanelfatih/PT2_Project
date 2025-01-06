@@ -18,7 +18,9 @@ class Review
     string timeStamp;
 
     public:
-    const string& submitReview(string& id,string& name,int rate,string& comm) const;
+    const string submitReview(string& id,string& name,int rate,string& comm) const;
     bool deleteReview(string ID);
     double getAverageRating(string eventID);
 };
+
+#endif

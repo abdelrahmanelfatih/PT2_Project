@@ -11,7 +11,7 @@ void Location::addLocation(string name, string address, int capacity){
     this->capacity = capacity;
 }
 
-void Location::updateLocation(string id = "", string name = "",string address = "",  int capacity = 0, string status = ""){
+void Location::updateLocation(string id, string name,string address,  int capacity, string status){
     if (!id.empty()) locationID = id;
     if (!name.empty()) locationName = name;
     if (!address.empty()) this->address = address;
