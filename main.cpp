@@ -5,6 +5,10 @@
 #include "Notification.h"
 #include "EVENT_COORDINATOR.hpp"
 #include "TICKET.hpp"
+#include "Participant.hpp"
+#include "Schedule.hpp"
+#include "Audience.hpp"
+#include "Volunteer.hpp"
 
 using namespace std;
 
@@ -121,12 +125,40 @@ int main() {
     } else{
         cout<<"refund Failed"<<endl;
     }
+    
+        // Testing Participant class
+    Participant participant1("P001", "Speaker", "John Doe");
+    cout << participant1.registerParticipant("E001", "Speaker", "John Doe") << endl;
+
+    participant1.updateParticipantRole("P001", "Attendee");
+    Participant pDetails = participant1.getParticipantDetails("P001");
+    cout << "Participant Role: " << pDetails.getParticipantRole() << endl;
+
+    // Testing Schedule class
+    Schedule schedule1("S001", "2025-02-15", "10:00 AM", "12:00 PM");
+    cout << schedule1.setSchedule("E001", "2025-02-15", "10:00 AM", "12:00 PM") << endl;
+
+    schedule1.updateSchedule("S001", "2025-02-15", "11:00 AM", "1:00 PM");
+    Schedule sDetails = schedule1.getSchedule("S001");
+    cout << "Schedule Start Time: " << sDetails.getStartTime() << endl;
+
+    // Testing Audience class
+    Audience audience1("A001", "Attendee", "Jane Smith", "jane@example.com", "1234567890");
+    cout << "Audience Email: " << audience1.getEmail() << endl;
+    cout << "Audience Phone: " << audience1.getPhoneNo() << endl;
+
+    // Testing Volunteer class
+    Volunteer volunteer1("V001", "Volunteer", "Alice Brown", "Registration", 5.0);
+    cout << "Volunteer Task: " << volunteer1.getTask() << endl;
+    cout << "Volunteer Working Hours: " << volunteer1.getWorkingHours() << " hours" << endl;
+
+    volunteer1.assignTask("Crowd Management");
+    volunteer1.setWorkingHours(8.0);
+    cout << "Updated Volunteer Task: " << volunteer1.getTask() << endl;
+    cout << "Updated Working Hours: " << volunteer1.getWorkingHours() << " hours" << endl;
 
     system("pause");
 
     return 0;
 }
     
-    system("pause");
-    return 0;
-}
