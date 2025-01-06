@@ -1,5 +1,5 @@
-#ifndef EVENT_COORDINATOR_H
-#define EVENT_COORDINATOR_H
+#ifndef EVENT_COORDINATOR_HPP
+#define EVENT_COORDINATOR_HPP
 
 #include <string>
 #include <map>
