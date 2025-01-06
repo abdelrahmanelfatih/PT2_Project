@@ -1,4 +1,4 @@
-#include "EVENT_COORDINATOR.h"
+#include "EVENT_COORDINATOR.hpp"
 #include <iostream>
 #include <map>
 
