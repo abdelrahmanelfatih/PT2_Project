@@ -3,10 +3,10 @@
 #include <iostream>
 using namespace std;
 
-Ticket::Ticket() : ticketID(""), price(0.00), date("") {}
+Ticket::Ticket() : ticketID(""), Type("") ,price(0.00), date("") {}
 
-string Ticket::generateTicket(const std::string& eventID, double type, double price, const std::string& date) {
-    this->ticketID = eventID + std::to_string(static_cast<int>(type));
+string Ticket::generateTicket(const std::string& eventID, std::string type, double price, const std::string& date) {
+    this->ticketID = eventID + type;
     this->price = price;
     this->date = date;
     return ticketID;
@@ -32,6 +32,13 @@ bool Ticket::refundTicket(const string& ticketID){
     }
     std::cout << "Invalid ticket ID: " << ticketID << std::endl;
     return false;
-}
 
+}
+    std::string Ticket::getDate() {
+    return this->date;
+    }
+
+    double Ticket::getPrice() {
+    return this->price;
+    }
 

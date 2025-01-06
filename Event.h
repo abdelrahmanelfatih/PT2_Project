@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include "Location.h"
-#include "EVENT_COORDINATOR.h"
+#include "EVENT_COORDINATOR.hpp"
 #include "Participant.hpp"
 #include "Resource.hpp"
 #include "Schedule.hpp"

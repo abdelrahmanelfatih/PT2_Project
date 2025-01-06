@@ -1,6 +1,5 @@
 #ifndef TICKET_HPP
 #define TICKET_HPP
-
 #include <string>
 
 class Ticket{
@@ -8,50 +7,25 @@ class Ticket{
         std::string ticketID;
         double price;
         std::string date;
+        std::string Type;
     
-    protected:
-        void setPrice(double newPrice) {
-        price = newPrice;
-    }
 
     public:
         Ticket();
-        std::string generateTicket(const std::string& eventID, double type, double price, const std::string& date);
+        std::string generateTicket(const std::string& eventID, std::string type, double price, const std::string& date);
         bool validateTicket(const std::string& ticketID) const;
         const Ticket& getTicketDetails(const std::string& ticketID) const;
         bool refundTicket(const std::string& ticketID);
 
-        double getPrice() const {
-            return price;
-        }
-};
+        std::string getType();
 
-class VIP : public Ticket{
-    private:
-        std::string benefits = "Food, Drinks, Private Seating, Entry";
-    public:
-        VIP() {
-            setPrice(100);
-        }
-};
+        double getPrice();
+        std::string getTicketID();
+        std::string getDate();
 
-class Regular : public Ticket{
-    private:
-        std::string benefits = "Food, Drinks, Normal Seating, Entry";
-    public:
-        Regular() {
-            setPrice(50);
-        }
+        void setType();
+        void setPrice(double price);
 
-};
-
-class Economy : public Ticket{
-    private:
-        std::string benefits = "Entry, Seating";
-    public:
-        Economy() {
-            setPrice(25);
-        }
 };
 
 #endif

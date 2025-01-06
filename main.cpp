@@ -9,6 +9,9 @@
 #include "Schedule.hpp"
 #include "Audience.hpp"
 #include "Volunteer.hpp"
+#include "Event.h"
+#include "Location.h"
+
 
 using namespace std;
 
@@ -125,8 +128,8 @@ int main() {
     } else{
         cout<<"refund Failed"<<endl;
     }
-    
-        // Testing Participant class
+
+            // Testing Participant class
     Participant participant1("P001", "Speaker", "John Doe");
     cout << participant1.registerParticipant("E001", "Speaker", "John Doe") << endl;
 
@@ -157,8 +160,17 @@ int main() {
     cout << "Updated Volunteer Task: " << volunteer1.getTask() << endl;
     cout << "Updated Working Hours: " << volunteer1.getWorkingHours() << " hours" << endl;
 
-    system("pause");
+    //Event test
+    Location* location;
+    EventCoordinator* coord3;
+    Schedule* schudle;
+    Event event("1", "ACD", "Arabic cultare day event", "Caltural", location, coord3, schudle);
+    event.createEvent();
+    event.updateEventDetails( "2", "Infest","indonesian cultare event","cultaral");
+    event.getEventDetails();
+
+
+    std::system("pause");
 
     return 0;
 }
-    
