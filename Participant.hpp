@@ -20,6 +20,8 @@ public:
     bool updateParticipantRole(const string& participantID, const string& newRole);
 
     Participant getParticipantDetails(const string& participantID) const;
+
+    string getParticipantRole() const;
 };
 
 #endif

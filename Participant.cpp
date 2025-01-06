@@ -32,3 +32,8 @@ Participant Participant::getParticipantDetails(const string& participantID) cons
     cout << "Participant with ID " << participantID << " not found." << endl;
     return Participant("", "", ""); // Return an empty participant object
 }
+
+
+string Participant::getParticipantRole() const {
+    return role; 
+}

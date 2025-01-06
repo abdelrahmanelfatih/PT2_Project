@@ -23,11 +23,13 @@ bool Schedule::updateSchedule(const string& scheduleID, const string& date, cons
     return false;
 }
 
-map<string, string> Schedule::getScheduleDetails() const {
-        return {
-            {"Schedule ID", scheduleID},
-            {"Start Time", startTime},
-            {"End Time", endTime},
-            {"Date", date}
-        };
+Schedule Schedule::getSchedule(const string& scheduleID) const {
+    if (this->scheduleID == scheduleID) {
+        return *this;
+    }
+    return Schedule("", "", "", "");
+}
+
+string Schedule::getStartTime() const {
+    return startTime;
 }
