@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Sponsor.hpp"
 #include "Resource.hpp"
+#include "Review.h"
+#include "Notification.h"
 
 using namespace std;
 
@@ -32,7 +34,36 @@ int main() {
     projector.addResource(5);
 
     cout << projector.checkResourceDetails() << "\n\n\n";
+    
+    // Notification Test
+    Notification notification;
+    string notificationMessage = "Event starts in 30 minutes.";
+    notification.setMessage(notificationMessage);
+    cout << "Notification Message: " << notificationMessage << endl;
+    cout << notification.sendMessage() << endl;
+    
+    //Review Test
+    Review review;
+    string reviewID = "R001";
+    string reviewerName = "Alice";
+    int rating = 5;
+    string comment = "Excellent event!";
+    string eventID = "E001";
+    
+    review.submitReview(reviewID, reviewerName, rating, comment);
+    cout << "Review Submitted with ID: " << reviewID << endl;
 
+    cout << "Deleting Review..." << endl;
+    if (review.deleteReview(reviewID)) {
+        cout << "Review with ID " << reviewID << " deleted successfully." << endl;
+    } else {
+        cout << "Failed to delete review with ID " << reviewID << "." << endl;
+    }
+
+    cout << "Calculating Average Rating..." << endl;
+    double averageRating = review.getAverageRating(eventID);
+    cout << "Average Rating for Event " << eventID << ": " << averageRating << endl;
+    
     system("pause");
     return 0;
 }
