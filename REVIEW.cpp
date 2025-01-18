@@ -8,7 +8,11 @@ string Review::submitReview() const {
 }
 
 bool Review::deleteReview() {
-    // Logic for deleting a review (placeholder)
+    reviewID = "";
+    reviewerName = "";
+    rating = 0;
+    comment = "";
+    timeStamp = "";
     return true;
 }
 

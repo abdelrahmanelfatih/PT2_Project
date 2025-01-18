@@ -23,21 +23,21 @@ void Event::getEventDetails() const {
 
     if (location) {
         std::cout << "Location Details:" << std::endl;
-        Location.getLocationDetails();
+        location->getLocationDetails();
     } else {
         std::cout << "Location not set." << std::endl;
     }
 
     if (eventcoordinator) {
         std::cout << "Coordinator Details:" << std::endl;
-        eventcoordinator.getCoordinatorDetails();
+        eventcoordinator->getCoordinatorDetails();
     } else {
         std::cout << "Event Coordinator not set." << std::endl;
     }
 
     if (schedule) {
         std::cout << "Schedule Details:" << std::endl;
-        schedule.getScheduleDetails();
+        schedule->getScheduleDetails();
     } else {
         std::cout << "Schedule not set." << std::endl;
     }

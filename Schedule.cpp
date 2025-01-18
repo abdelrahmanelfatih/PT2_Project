@@ -1,5 +1,5 @@
 #include "Schedule.hpp"
-
+#include <iostream>
 using namespace std;
 
 Schedule::Schedule(const string& scheduleID, const string& date, const string& startTime, const string& endTime)
@@ -23,11 +23,12 @@ bool Schedule::updateSchedule(const string& scheduleID, const string& date, cons
     return false;
 }
 
-Schedule Schedule::getSchedule(const string& scheduleID) const {
-    if (this->scheduleID == scheduleID) {
-        return *this;
-    }
-    return Schedule("", "", "", "");
+void Schedule::getScheduleDetails() const {
+    cout << "Schedule Details:" << endl;
+    cout << "ID: " << scheduleID << endl;
+    cout << "Start time: " << startTime << endl;
+    cout << "End time: " << endTime << endl;
+    cout << "date: " << date << endl;
 }
 
 string Schedule::getStartTime() const {

@@ -17,7 +17,7 @@ public:
 
     string setSchedule(const string& eventID, const string& date, const string& startTime, const string& endTime);
     bool updateSchedule(const string& scheduleID, const string& date, const string& startTime, const string& endTime);
-    Schedule getSchedule(const string& scheduleID) const;
+    void getScheduleDetails() const;
     string getStartTime() const;    
 };
 

@@ -12,7 +12,6 @@
 #include "Event.h"
 #include "Location.h"
 
-//skibidi
 
 using namespace std;
 
@@ -46,33 +45,29 @@ int main() {
     cout << projector.checkResourceDetails() << "\n\n\n";
     
     // Notification Test
-    Notification notification;
+    Notification notification("1","Are you attending today?", "10PM");
     string notificationMessage = "Event starts in 30 minutes.";
     notification.setMessage(notificationMessage);
     cout << "Notification Message: " << notificationMessage << endl;
     cout << notification.sendMessage() << endl;
     
     //Review Test
-    Review review;
+    Review review("1","ACD review",4,"This event is so fun" , "11PM");
     string reviewID = "R001";
     string reviewerName = "Alice";
     int rating = 5;
     string comment = "Excellent event!";
     string eventID = "E001";
     
-    review.submitReview(reviewID, reviewerName, rating, comment);
+    review.submitReview();
     cout << "Review Submitted with ID: " << reviewID << endl;
 
     cout << "Deleting Review..." << endl;
-    if (review.deleteReview(reviewID)) {
+    if (review.deleteReview()) {
         cout << "Review with ID " << reviewID << " deleted successfully." << endl;
     } else {
         cout << "Failed to delete review with ID " << reviewID << "." << endl;
     }
-
-    cout << "Calculating Average Rating..." << endl;
-    double averageRating = review.getAverageRating(eventID);
-    cout << "Average Rating for Event " << eventID << ": " << averageRating << endl;
 
     // Event Coordinator Test
 
@@ -130,7 +125,7 @@ int main() {
         cout<<"refund Failed"<<endl;
     }
 
-            // Testing Participant class
+    // Testing Participant class
     Participant participant1("P001", "Speaker", "John Doe");
     cout << participant1.registerParticipant("E001", "Speaker", "John Doe") << endl;
 
@@ -143,8 +138,7 @@ int main() {
     cout << schedule1.setSchedule("E001", "2025-02-15", "10:00 AM", "12:00 PM") << endl;
 
     schedule1.updateSchedule("S001", "2025-02-15", "11:00 AM", "1:00 PM");
-    Schedule sDetails = schedule1.getSchedule("S001");
-    cout << "Schedule Start Time: " << sDetails.getStartTime() << endl;
+    schedule1.getScheduleDetails();
 
     // Testing Audience class
     Audience audience1("A001", "Attendee", "Jane Smith", "jane@example.com", "1234567890");
@@ -162,13 +156,18 @@ int main() {
     cout << "Updated Working Hours: " << volunteer1.getWorkingHours() << " hours" << endl;
 
     //Event test
-    Location* location;
-    EventCoordinator* coord3;
-    Schedule* schudle;
+    Location* location = new Location("1","DSI", "UTM", 200, "Available");
+    EventCoordinator* coord3 = new EventCoordinator;
+    Schedule* schudle = &schedule1; 
     Event event("1", "ACD", "Arabic cultare day event", "Caltural", location, coord3, schudle);
     event.createEvent();
     event.updateEventDetails( "2", "Infest","indonesian cultare event","cultaral");
     event.getEventDetails();
+    
+
+    location = nullptr;
+    coord3 = nullptr;
+    schudle = nullptr;
 
 
     std::system("pause");

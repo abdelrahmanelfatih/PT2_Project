@@ -17,6 +17,7 @@ public:
 
     void addSponsor(const string& id, const string& name, const string& orgType, double budget);
 
+
     string getID();
     string getName();
     string getType();

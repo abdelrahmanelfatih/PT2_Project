@@ -21,7 +21,7 @@ string Sponsor::getType(){return organizationType;}
 double Sponsor::getBudget(){return budget;}
 
 void Sponsor::getSponsorDetails() {
-    cout << "sponsorID: " << getID() << endl;
+    cout << "SponsorID: " << getID() << endl;
     cout << "Name: " << getName() << endl;
     cout << "Organization Type: " << getType() << endl;
     cout << "Budget: " << getBudget() << endl;
