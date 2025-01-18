@@ -15,10 +15,9 @@ void EventCoordinator::assignCoordinator(const std::string& name, const std::str
 }
 
 
-std::map<std::string, std::string> EventCoordinator::getCoordinatorDetails() const {
-    return {
-        {"Coordinator ID", coordinatorID},
-        {"Name", name},
-        {"Email", email}
-    };
+void EventCoordinator::getCoordinatorDetails() const {
+    std::cout << "Event Coordinator Details:" << std::endl;
+    std::cout << "ID: " << coordinatorID << std::endl;
+    std::cout << "Start time: " << name << std::endl;
+    std::cout << "End time: " << email << std::endl;
 }

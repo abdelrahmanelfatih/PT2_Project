@@ -15,7 +15,7 @@ public:
     Sponsor();
     Sponsor(const string& id, const string& name, const string& orgType, double budget);
 
-    void addSponsor(const string& id, const string& name, const string& orgType, double budget);
+    void addSponsor(/*const string& id, const string& name, const string& orgType, double budget*/);
 
 
     string getID();

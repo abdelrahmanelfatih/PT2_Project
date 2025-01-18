@@ -11,7 +11,7 @@ class EventCoordinator{
     public:
     EventCoordinator();
     void assignCoordinator(const std::string& name, const std::string& email);
-    std::map<std::string, std::string> getCoordinatorDetails() const;
+    void getCoordinatorDetails() const;
 
 };
 

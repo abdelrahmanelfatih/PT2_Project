@@ -46,6 +46,8 @@ public:
         }
     }
 
+
+    string getID()const;
     string createEvent();
     void updateEventDetails(string id, string name, string desc, string cat);
     void getEventDetails() const;

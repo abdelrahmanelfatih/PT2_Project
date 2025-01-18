@@ -17,6 +17,8 @@ public:
     void addResource(int q);
     bool allocateResource(int amount);
     string checkResourceDetails() const;
+
+    
 };
 
 #endif

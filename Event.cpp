@@ -1,7 +1,10 @@
 #include "Event.h"
 
 string Event::createEvent() {
-    std::cout << "Event '" << name << "' created." << std::endl;
+    return "";
+}
+
+string Event::getID() const {
     return eventID;
 }
 

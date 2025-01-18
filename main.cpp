@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "Sponsor.hpp"
 #include "Resource.hpp"
 #include "Review.h"
@@ -12,165 +13,93 @@
 #include "Event.h"
 #include "Location.h"
 
+int userInterface();
+void displayLocations(const vector<Location>& locations);
 
 using namespace std;
 
 int main() {
+    vector<Resource> resources;
+    vector<Location> locations;
+    vector<Event> events;
 
-    //Sponsor Test
-    Sponsor sponsor1("S001", "TechCorp", "Technology", 50000.0);
-    Sponsor sponsor2;
+    locations.push_back(Location("1", "DSI", "UTM", 200, "Available"));
+    locations.push_back(Location("2", "MPK5", "FK, UTM", 40, "Available"));
+    locations.push_back(Location("3", "BK2", "N24, UTM", 80, "Booked"));
+    locations.push_back(Location("4", "BS1", "N24, UTM", 20, "Booked"));
+    locations.push_back(Location("5", "BK2", "N28, UTM", 200, "Unavailable"));
 
-    sponsor2.addSponsor("S002", "MediCorp", "Medical", 10000.0);
+    resources.push_back(Resource("1", "Chairs", 200));
+    resources.push_back(Resource("2", "Tools", 50));
+    resources.push_back(Resource("3", "Tables", 25));
 
-    std::cout << "\n\nSponsor Details:\n";
-    sponsor1.getSponsorDetails();
+    int input = userInterface();
+    int i = 0; // Local event counter
 
+    switch (input) {
+        case 1: {
+            string id = to_string(i++);
+            string name, desc, cate;
 
-    //Resources Test
-    Resource projector("R001", "Projector", 10);
+            cout << "What is the name of the event? ";
+            cin.ignore();
+            getline(cin, name);
 
-    cout << projector.checkResourceDetails() << "\n";
-    if (projector.allocateResource(3)) {
-        cout << "\n\nResources allocated successfully!\n";
-    } else {
-        cout << "Allocation failed: Not enough resources!\n";
-    } 
+            cout << "\nInput event description: ";
+            getline(cin, desc);
 
-    cout << projector.checkResourceDetails() << "\n";
+            cout << "\nEnter event category: ";
+            getline(cin, cate);
 
-    cout << "adding 5 projector...\n";
-    projector.addResource(5);
+            displayLocations(locations);
 
-    cout << projector.checkResourceDetails() << "\n\n\n";
-    
-    // Notification Test
-    Notification notification("1","Are you attending today?", "10PM");
-    string notificationMessage = "Event starts in 30 minutes.";
-    notification.setMessage(notificationMessage);
-    cout << "Notification Message: " << notificationMessage << endl;
-    cout << notification.sendMessage() << endl;
-    
-    //Review Test
-    Review review("1","ACD review",4,"This event is so fun" , "11PM");
-    string reviewID = "R001";
-    string reviewerName = "Alice";
-    int rating = 5;
-    string comment = "Excellent event!";
-    string eventID = "E001";
-    
-    review.submitReview();
-    cout << "Review Submitted with ID: " << reviewID << endl;
+            cout << "Pick a location between the locations listed: ";
+            int choice{};
+            cin >> choice;
 
-    cout << "Deleting Review..." << endl;
-    if (review.deleteReview()) {
-        cout << "Review with ID " << reviewID << " deleted successfully." << endl;
-    } else {
-        cout << "Failed to delete review with ID " << reviewID << "." << endl;
-    }
-
-    // Event Coordinator Test
-
-    map<string, EventCoordinator> coordinators;
-
-    EventCoordinator coord1, coord2;
-    
-    coord1.assignCoordinator("Abdelrahman Elfatih", "Abdul@gmail.com");
-    coord2.assignCoordinator("Aditya Vivaldi", "aditviv@gmail.com");
-
-    coordinators[coord1.getCoordinatorDetails().at("Coordinator ID")] = coord1;
-    coordinators[coord2.getCoordinatorDetails().at("Coordinator ID")] = coord2;
-    
-     for (const auto& entry : coordinators) {
-        cout << "Coordinator ID: " << entry.first << endl;
-
-        
-        for (const auto& detail : entry.second.getCoordinatorDetails()) {
-            if (detail.first != "Coordinator ID") {
-                cout << detail.first << ": " << detail.second << endl;
+            if (choice < 1 || choice > locations.size()) {
+                cout << "Invalid input, please try again." << endl;
+                return 1;
             }
+            cout << "Enter Coordinator info"<< endl;
+            cout << "Coordinator ID"
+
+            Event(id,name,desc,cate,locations[choice - 1])            cout << "Event created successfully with ID: " << id << endl;
+            break;
         }
-     }
-
-    // Ticket Test
-
-    Ticket ticket;
-
-    string ticketID = ticket.generateTicket("V10", "VIP", 250.00, "2025-1-6");
-    cout<<"Ticket Generated, Ticket ID: "<< ticketID<<endl;
-
-    if(ticket.validateTicket(ticketID)){
-        cout<<"Valid Ticket"<< endl;
-    } else{
-        cout<<"Invalid ticket"<<endl;
+        case 2: {
+            
+        }
+        default:
+            cout << "Invalid choice. Exiting program." << endl;
+            return 1;
     }
 
-    try
-    {
-        Ticket details = ticket.getTicketDetails(ticketID);
-        cout << "Ticket Details:" << endl;
-        cout << "ID: " << ticketID << endl;
-        cout << "Price: " << details.getPrice() << endl;
-        cout << "Date: " << details.getDate() << endl;
-    }
-    catch(const std::invalid_argument& e)
-    {
-        cout << "Error: " << e.what() << endl;
-    }
-    
-    if(ticket.refundTicket(ticketID)){
-        cout<<"ticket refunded."<<endl;
-
-    } else{
-        cout<<"refund Failed"<<endl;
-    }
-
-    // Testing Participant class
-    Participant participant1("P001", "Speaker", "John Doe");
-    cout << participant1.registerParticipant("E001", "Speaker", "John Doe") << endl;
-
-    participant1.updateParticipantRole("P001", "Attendee");
-    Participant pDetails = participant1.getParticipantDetails("P001");
-    cout << "Participant Role: " << pDetails.getParticipantRole() << endl;
-
-    // Testing Schedule class
-    Schedule schedule1("S001", "2025-02-15", "10:00 AM", "12:00 PM");
-    cout << schedule1.setSchedule("E001", "2025-02-15", "10:00 AM", "12:00 PM") << endl;
-
-    schedule1.updateSchedule("S001", "2025-02-15", "11:00 AM", "1:00 PM");
-    schedule1.getScheduleDetails();
-
-    // Testing Audience class
-    Audience audience1("A001", "Attendee", "Jane Smith", "jane@example.com", "1234567890");
-    cout << "Audience Email: " << audience1.getEmail() << endl;
-    cout << "Audience Phone: " << audience1.getPhoneNo() << endl;
-
-    // Testing Volunteer class
-    Volunteer volunteer1("V001", "Volunteer", "Alice Brown", "Registration", 5.0);
-    cout << "Volunteer Task: " << volunteer1.getTask() << endl;
-    cout << "Volunteer Working Hours: " << volunteer1.getWorkingHours() << " hours" << endl;
-
-    volunteer1.assignTask("Crowd Management");
-    volunteer1.setWorkingHours(8.0);
-    cout << "Updated Volunteer Task: " << volunteer1.getTask() << endl;
-    cout << "Updated Working Hours: " << volunteer1.getWorkingHours() << " hours" << endl;
-
-    //Event test
-    Location* location = new Location("1","DSI", "UTM", 200, "Available");
-    EventCoordinator* coord3 = new EventCoordinator;
-    Schedule* schudle = &schedule1; 
-    Event event("1", "ACD", "Arabic cultare day event", "Caltural", location, coord3, schudle);
-    event.createEvent();
-    event.updateEventDetails( "2", "Infest","indonesian cultare event","cultaral");
-    event.getEventDetails();
-    
-
-    location = nullptr;
-    coord3 = nullptr;
-    schudle = nullptr;
-
-
-    std::system("pause");
+    cout << "Press Enter to continue...";
+    cin.ignore();
+    cin.get();
 
     return 0;
+}
+
+int userInterface() {
+    int choice{};
+    cout << "--------------------------- Welcome to Evo Management ---------------------------" << endl;
+    cout << "What would you like to do?" << endl;
+    cout << "1-Create event:\n2-Update event:\n3-Enroll in an event:\n";
+    cout << "(Pick 1 of the 3 options above)" << endl;
+    cin >> choice;
+    return choice;
+}
+
+void displayLocations(const vector<Location>& locations) {
+    if (locations.empty()) {
+        cout << "No locations available to book." << endl;
+        return;
+    }
+
+    for (int i = 0; i < locations.size(); i++) {
+        cout << i + 1 << "-Location[" << i << "]: ";
+        locations[i].getLocationDetails();
+    }
 }
