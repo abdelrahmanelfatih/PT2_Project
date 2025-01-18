@@ -15,7 +15,7 @@ public:
 
     Audience(const string& id, const string& role, const string& name, const string& email, const string& phoneNo);
     
-    void registerParticipant(const string& eventID) override;
+    void registerParticipant() override;
 
     void setEmail(string email);
     void setPhoneNo(string phoneNo);

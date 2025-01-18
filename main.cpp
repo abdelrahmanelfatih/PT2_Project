@@ -24,6 +24,7 @@ int main() {
     vector<Event> events;
     vector<Audience> audiences;
     vector<Volunteer> volunteers;
+    vector<Sponsor> sponsors;
 
     // Initialize locations
     locations.push_back(Location("1", "DSI", "UTM", 200, "Available"));
@@ -114,8 +115,24 @@ int main() {
             events.push_back(newEvent);
 
             cout << "Event created successfully with ID: " << id << endl;
+
+
+            cout << "Do you have a sponsor to add? (Y/N) ";
+            char ans;
+            cin.get(ans); 
+
+             
+            if(toupper(ans) == 'Y'){
+            // Enter Sponsor information
+            cout << "Enter Sponsor info: " << endl;
+            Sponsor sponsor1;
+            sponsor1.addSponsor();
+            break;
+            }
+            cout<< "Understandable have a nice day!" << endl;
             break;
         }
+        
         case 3: { // Enroll in an event
             while (true) {
                 char participantType;
@@ -124,22 +141,25 @@ int main() {
 
                 cout << "Put the eventID you want to participate: ";
                 cin >> eventID;
-                EventID = to_string(eventID);
+                //!EventID = to_string(eventID);
 
                 cout << "What do you want to be? (type 'a' for audience and 'v' for volunteer): ";
                 cin >> participantType;
 
                 if (participantType == 'a') {
                     Audience newAudience;
-                    audiences.push_back(newAudience);
-                    audiences[0].Audience::registerParticipant(EventID);
+                    newAudience.Audience::registerParticipant();
+                    events[eventID].addAudience(newAudience);
+
+                    //! audiences.push_back(newAudience);
+                    //! audiences[0].Audience::registerParticipant(EventID);
                     break;
                 }
 
                 if (participantType == 'v') {
                     Volunteer newVolunteer;
                     volunteers.push_back(newVolunteer);
-                    volunteers[0].Volunteer::registerParticipant(EventID);
+                    volunteers[0].Volunteer::registerParticipant();
                     break;
                 }
 
@@ -155,6 +175,7 @@ int main() {
     cout << "Press Enter to continue...";
     cin.get();
 
+    system("pause");
     return 0;
 }
 

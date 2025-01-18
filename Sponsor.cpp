@@ -7,13 +7,8 @@ Sponsor::Sponsor() : sponsorID(""), name(""), organizationType(""), budget() {}
 Sponsor::Sponsor(const string& id, const string& name, const string& orgType, double budget)
     :sponsorID(id), name(name), organizationType(orgType), budget(budget) {}
 
-void Sponsor::addSponsor(/*const string& id, const string& name, const string& orgType, double budget*/)
+void Sponsor::addSponsor()
 {
-    // sponsorID = id;
-    // this->name = name;
-    // organizationType = orgType;
-    // this->budget = budget;
-
     cout << "Enter sponsorID: ";
     cin >> sponsorID;
     cout << "Enter sponsor name: ";

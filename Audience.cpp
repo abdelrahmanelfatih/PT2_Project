@@ -8,7 +8,7 @@ Audience::Audience(const string& id, const string& role, const string& name, con
     : Participant(id, role, name), email(email) , phoneNo(phoneNo) {}
 
 
-void Audience::registerParticipant(const string& eventID){
+void Audience::registerParticipant(){
     cout << "Enter the Participant ID: "; cin >> participantID;
     cout << "Enter the Name: "; cin >> name;
     cout << "Enter the email: "; cin >> email;

@@ -17,7 +17,7 @@ public:
 
     Participant(const string& id, const string& role, const string& name);
 
-    virtual void registerParticipant(const string& eventID/*, const string& role, const string& name*/);
+    virtual void registerParticipant();
 
     bool updateParticipantRole(const string& participantID, const string& newRole);
 

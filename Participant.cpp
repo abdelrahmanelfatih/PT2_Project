@@ -9,17 +9,7 @@ Participant::Participant(){};
 Participant::Participant(const string& id, const string& role, const string& name)
     : participantID(id), role(role), name(name) {}
 
-void Participant::registerParticipant(const string& eventID/*, const string& role, const string& name*/) {  
-    // cout << "Registering participant for event " << eventID << "..." << endl;
-    // cout << "ID: " << participantID << ", Role: " << role << ", Name: " << name << endl;
-    // return "Participant " + name + " with ID " + participantID + " has been successfully registered for event " + eventID + ".";
-
-    // cout << "Enter the Participant ID: ";
-    // cin >> participantID;
-    // cout << "Enter the name: ";
-    // cin >> name;
-    // cout << "Enter the role: "; 
-}
+void Participant::registerParticipant() {}
 
 bool Participant::updateParticipantRole(const string& participantID, const string& newRole) {
     if (this->participantID == participantID) {

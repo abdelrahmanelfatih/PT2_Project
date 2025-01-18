@@ -45,3 +45,27 @@ void Event::getEventDetails() const {
         std::cout << "Schedule not set." << std::endl;
     }
 }
+
+
+void Event::addVolunteer(const Volunteer& volunteer){
+    volunteers.push_back(volunteer);
+}
+void Event::addAudience(const Audience& audience){
+    audiences.push_back(audience);
+}
+void Event::addSponsor(Sponsor* sponsor){
+    sponsors.push_back(sponsor);
+}
+void Event::addTicket(Ticket* ticket){
+    tickets.push_back(ticket);
+}
+void Event::addResource(const Resource& resource){
+    resources.push_back(resource);
+}
+void Event::addNotification(Notification* notification){
+    notifications.push_back(notification);
+}
+
+void Event::addReview(Review* review){
+    reviews.push_back(review);
+}

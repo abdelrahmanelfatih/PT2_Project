@@ -16,7 +16,7 @@ public:
 
     Volunteer(const string& id, const string& role, const string& name, const string& task, double WrkHrs);
 
-    void registerParticipant(const string& eventID) override;
+    void registerParticipant() override;
 
     void assignTask(string task);
     void setWorkingHours(double hours);

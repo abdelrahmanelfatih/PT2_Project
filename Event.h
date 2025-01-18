@@ -9,6 +9,12 @@
 #include "Participant.hpp"
 #include "Resource.hpp"
 #include "Schedule.hpp"
+#include "Audience.hpp"
+#include "Volunteer.hpp"
+#include "Sponsor.hpp"
+#include "Notification.h"
+#include "Review.h"
+#include "TICKET.hpp"
 
 using std::string;
 using std::vector;
@@ -24,8 +30,13 @@ private:
     EventCoordinator* eventcoordinator; 
     Schedule* schedule;                 
 
-    vector<Participant*> participants;
-    vector<Resource*> resources;
+    vector<Audience> audiences;
+    vector<Volunteer> volunteers;
+    vector<Resource> resources;
+    vector<Sponsor*> sponsors;
+    vector<Ticket*> tickets;
+    vector<Review*> reviews;
+    vector<Notification*> notifications;
 
 public:
     
@@ -39,23 +50,40 @@ public:
     }
 
     
+
+    
     ~Event() {
         location = nullptr;
         eventcoordinator = nullptr;
         schedule = nullptr;
-        for (auto participant : participants) {
-            delete participant;
+        for (auto ticket : tickets) {
+            delete ticket;
         }
-        for (auto resource : resources) {
-            delete resource;
+        for (auto review : reviews) {
+            delete review;
+        }
+        for (auto notification : notifications) {
+            delete notification;
+        }
+        for (auto sponsor : sponsors) {
+            delete sponsor;
         }
     }
+
 
 
     string getID()const;
     string createEvent();
     void updateEventDetails(string id, string name, string desc, string cat);
     void getEventDetails() const;
+
+    void addVolunteer(const Volunteer& volunteer);
+    void addAudience(const Audience& audience);
+    void addSponsor(Sponsor* sponsor);
+    void addTicket(Ticket* ticket);
+    void addResource(const Resource& resource);
+    void addNotification(Notification* notification);
+    void addReview(Review* review);
 };
 
 #endif
