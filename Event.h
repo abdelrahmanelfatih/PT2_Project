@@ -14,6 +14,7 @@ using std::string;
 using std::vector;
 
 class Event {
+private:
     string eventID;
     string name;
     string description;
@@ -30,14 +31,18 @@ public:
     
     Event(string id, string name, string desc, string cat, 
           Location* loc, EventCoordinator* coord, Schedule* sched)
-        : eventID(id), name(name), description(desc), category(cat), 
-          location(loc), eventcoordinator(coord), schedule(sched) {}
+        : eventID(id), name(name), description(desc), category(cat)
+    {
+        location = loc;
+        eventcoordinator = coord;
+        schedule = sched;
+    }
 
     
     ~Event() {
-        delete location;
-        delete eventcoordinator;
-        delete schedule;
+        location = nullptr;
+        eventcoordinator = nullptr;
+        schedule = nullptr;
         for (auto participant : participants) {
             delete participant;
         }

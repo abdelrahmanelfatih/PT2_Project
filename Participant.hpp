@@ -13,6 +13,8 @@ protected:
 
 public:
     // Constructor
+    Participant();
+
     Participant(const string& id, const string& role, const string& name);
 
     virtual void registerParticipant(const string& eventID/*, const string& role, const string& name*/);

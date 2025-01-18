@@ -10,6 +10,9 @@ private:
     string phoneNo;
 
 public:
+
+    Audience();
+
     Audience(const string& id, const string& role, const string& name, const string& email, const string& phoneNo);
     
     void registerParticipant(const string& eventID) override;

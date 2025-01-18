@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+Volunteer::Volunteer(){};
+
 Volunteer::Volunteer(const string& id, const string& role, const string& name, const string& task, double WrkHrs)
     : Participant(id, role, name), task(task), WrkHrs(WrkHrs) {}
 

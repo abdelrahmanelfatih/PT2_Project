@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+Audience::Audience(){};
+
 Audience::Audience(const string& id, const string& role, const string& name, const string& email, const string& phoneNo)
     : Participant(id, role, name), email(email) , phoneNo(phoneNo) {}
 

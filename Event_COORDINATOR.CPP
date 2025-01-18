@@ -2,7 +2,7 @@
 #include <iostream>
 #include <map>
 
-EventCoordinator::EventCoordinator() : coordinatorID(""), name(""), email("") {}
+EventCoordinator::EventCoordinator(std::string id, std::string name, std::string email) : coordinatorID(id), name(name), email(email) {}
 
 
 void EventCoordinator::assignCoordinator(const std::string& name, const std::string& email) {

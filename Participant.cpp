@@ -4,6 +4,8 @@
 using namespace std;
 
 // Constructor
+Participant::Participant(){};
+
 Participant::Participant(const string& id, const string& role, const string& name)
     : participantID(id), role(role), name(name) {}
 

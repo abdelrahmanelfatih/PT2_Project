@@ -9,7 +9,7 @@ class EventCoordinator{
         std::string name;
         std::string email;
     public:
-    EventCoordinator();
+    EventCoordinator(std::string id, std::string name, std::string email);
     void assignCoordinator(const std::string& name, const std::string& email);
     void getCoordinatorDetails() const;
 
