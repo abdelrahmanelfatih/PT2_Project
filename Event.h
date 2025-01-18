@@ -46,7 +46,7 @@ public:
         }
     }
 
-    void createEvent();
+    string createEvent();
     void updateEventDetails(string id, string name, string desc, string cat);
     void getEventDetails() const;
 };

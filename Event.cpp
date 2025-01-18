@@ -1,7 +1,8 @@
 #include "Event.h"
 
-void Event::createEvent() {
+string Event::createEvent() {
     std::cout << "Event '" << name << "' created." << std::endl;
+    return eventID;
 }
 
 void Event::updateEventDetails(string id, string name, string desc, string cat) {
@@ -10,6 +11,7 @@ void Event::updateEventDetails(string id, string name, string desc, string cat) 
     description = desc;
     category = cat;
     std::cout << "Event details updated successfully!" << std::endl;
+    
 }
 
 void Event::getEventDetails() const {
@@ -21,27 +23,21 @@ void Event::getEventDetails() const {
 
     if (location) {
         std::cout << "Location Details:" << std::endl;
-        for (const auto& detail : location->getLocationDetails()) {
-            std::cout << detail.first << ": " << detail.second << std::endl;
-        }
+        Location.getLocationDetails();
     } else {
         std::cout << "Location not set." << std::endl;
     }
 
     if (eventcoordinator) {
         std::cout << "Coordinator Details:" << std::endl;
-        for (const auto& detail : eventcoordinator->getCoordinatorDetails()) {
-            std::cout << detail.first << ": " << detail.second << std::endl;
-        }
+        eventcoordinator.getCoordinatorDetails();
     } else {
         std::cout << "Event Coordinator not set." << std::endl;
     }
 
     if (schedule) {
         std::cout << "Schedule Details:" << std::endl;
-        for (const auto& detail : schedule->getScheduleDetails()) {
-            std::cout << detail.first << ": " << detail.second << std::endl;
-        }
+        schedule.getScheduleDetails();
     } else {
         std::cout << "Schedule not set." << std::endl;
     }
