@@ -68,7 +68,7 @@ int main() {
             int choice;
             cin >> choice;
 
-            if (choice < 1 || choice > locations.size()) {
+            if (choice < 1 || choice > locations.size() || cin.fail()) {
                 cout << "Invalid input, please try again." << endl;
                 return 1;
             }
@@ -137,6 +137,11 @@ int main() {
             break;
         }
         
+
+        case 2:
+            cout<<"Would you like to update event information? (Y/N)";
+            
+
         case 3: { // Enroll in an event
             while (true) {
                 char participantType;
@@ -145,7 +150,6 @@ int main() {
 
                 cout << "Put the eventID you want to participate: ";
                 cin >> eventID;
-                //!EventID = to_string(eventID);
 
                 cout << "What do you want to be? (type 'a' for audience and 'v' for volunteer): ";
                 cin >> participantType;
