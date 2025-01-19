@@ -9,10 +9,10 @@ Audience::Audience(const string& id, const string& role, const string& name, con
 
 
 void Audience::registerParticipant(){
-    cout << "Enter the Participant ID: "; cin >> participantID;
-    cout << "Enter the Name: "; cin >> name;
-    cout << "Enter the email: "; cin >> email;
-    cout << "Enter the phone number"; cin >> phoneNo;
+    cout << "Enter the Participant ID: "; getline(cin, participantID);
+    cout << "Enter the Name: "; getline(cin, name);
+    cout << "Enter the email: "; getline(cin, email);
+    cout << "Enter the phone number"; getline(cin, phoneNo);
     cout << endl << endl;
 
     this->role = "Audience";

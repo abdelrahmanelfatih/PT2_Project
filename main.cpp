@@ -34,9 +34,9 @@ int main() {
     locations.push_back(Location("5", "BK2", "N28, UTM", 200, "Unavailable"));
 
     // Initialize resources
-    resources.push_back(Resource("1", "Chairs", 200));
-    resources.push_back(Resource("2", "Tools", 50));
-    resources.push_back(Resource("3", "Tables", 25));
+    resources.push_back(Resource(1, "Chairs", 200));
+    resources.push_back(Resource(2, "Tools", 50));
+    resources.push_back(Resource(3, "Tables", 25));
 
     int eventCounter = 0; // Event ID counter
     int i = 0;
@@ -194,7 +194,7 @@ int main() {
             cout << "Resources (4)\n";
             cout << "Sponsor (5)\n";
             cout << "Ticket (6)\n";
-            cout << "Review (7)\nYour choice: ";
+            cout << "Review (7)\nNotification (8)\nYour choice: ";
             cin >> choice;
 
             switch(choice){
@@ -223,7 +223,7 @@ int main() {
                     break;
                 }
                 case 4: {
-                    for (const auto& resource : resources){
+                    for (const auto& resource : events[j].resources){
                         cout << endl;
                         cout << resource.checkResourceDetails() << endl;
                     }
@@ -252,8 +252,15 @@ int main() {
                         review->getReviewDetails();
                         cout << endl;
                     }
-                
+                    break;
+                }
 
+                case 8: {
+                    for (const auto notification : events[j].notifications){
+                        cout << endl;
+                        notification->getNotificationDetails();
+                        cout << endl;
+                    }
                 }
             }
             break;
@@ -268,6 +275,49 @@ int main() {
         events[j].addReview(&newReview);
         break;
         }
+
+        case 7: { // Generate Notification
+        int j;
+        cout << "Input the ID of the event you want to make notification: ";
+        cin >> j;
+
+        Notification newNotification;
+        newNotification.generateNotification();
+        events[j].addNotification(&newNotification);
+        break;
+        }
+
+        case 8: { //Allocate Resources
+        int j, i, num;
+        cout << "Input the ID of the event you want to allocate resources: ";
+        cin >> j;
+        cout << "Available resources list";
+        for(const auto resource : resources){
+            cout << "\n\nResource ID" << resource.getID();
+            cout << "\nType: " << resource.getType();
+            cout << "\nQuantity: " << resource.getQuantity();
+        }
+        cout << endl << endl;
+
+        cout << "Enter the resource ID you want to use: ";
+        cin >> i;
+
+        cout << "Enter the number of resources you want to allocate: ";
+        cin >> num;
+        cout << endl;
+
+        if(resources[i-1].allocateResource(num)){
+            Resource newResource(i, resources[i-1].getType(), num);
+            events[j].addResource(newResource);
+            cout << "Resource added!\n\n";
+        }
+        else{
+            cout << "Resource quantity is not sufficient! failed to allocate\n\n";
+        }
+
+        break;
+        }
+
         default:
             cout << "Invalid choice. Exiting program." << endl;
             return 1;
@@ -290,8 +340,8 @@ int userInterface() {
     int choice;
     cout << "--------------------------- Welcome to Evo Management ---------------------------" << endl;
     cout << "What would you like to do?" << endl;
-    cout << "1 - Create event\n2 - Update event (feature pending)\n3 - Enroll in an event\n4 - Generate Ticket\n5 - Event details\n6 - Generate Review";
-    cout << "\n(Pick 1 of the 6 options above): ";
+    cout << "1 - Create event\n2 - Update event (feature pending)\n3 - Enroll in an event\n4 - Generate Ticket\n5 - Event details\n6 - Generate Review\n7 - Generate Notification\n8 - Allocate Resources";
+    cout << "\n(Pick 1 of the 8 options above): ";
     cin >> choice;
     return choice;
 }

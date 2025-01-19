@@ -9,8 +9,8 @@ Volunteer::Volunteer(const string& id, const string& role, const string& name, c
 
 void Volunteer::registerParticipant(){
     cout << "Enter the Participant ID: "; cin >> participantID;
-    cout << "Enter the Name: "; cin >> name;
-    cout << "Enter the task: "; cin >> task;
+    cout << "Enter the Name: "; cin.ignore(); getline(cin, name);
+    cout << "Enter the task: "; getline(cin, task);
     cout << "Enter the working hours"; cin >> WrkHrs;
     cout << endl << endl;
 

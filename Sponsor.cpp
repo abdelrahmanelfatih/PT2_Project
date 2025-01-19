@@ -10,11 +10,11 @@ Sponsor::Sponsor(const string& id, const string& name, const string& orgType, do
 void Sponsor::addSponsor()
 {
     cout << "Enter sponsorID: ";
-    cin >> sponsorID;
+    getline(cin, sponsorID);
     cout << "Enter sponsor name: ";
-    cin >> name;
+    cin.ignore(); getline(cin, name);
     cout << "Enter the type of the sponsor's organization: ";
-    cin >> organizationType;
+    cin.ignore(); getline(cin, organizationType);
     cout << "Enter sponsor's budget: ";
     cin >> budget;
     cout << endl << endl;
