@@ -27,18 +27,24 @@ void Review::generateReview() {
     cout<<"Enter Review ID: ";
     cin >> reviewID;
     cout<<"Enter Reviewer Name: ";
-    cin >> reviewerName;
+    cin.ignore();
+    getline(cin, reviewerName);
+
     cat:
     cout<<"Input Rate (1-5 Stars)";
     cin >> rating;
+
     if (rating > 5 || isalpha(rating)){
         cout<<"Invalid Rating, Please Try Again";
         goto cat;
     }
+
     cout<<"Write your Comment: ";
-    cin >> comment;
+    cin.ignore();
+    getline(cin, comment);
+
     cout << "Current Time? ";
-    cin >> timeStamp;
+    getline(cin, timeStamp);
 }
 
 void Review::getReviewDetails() const{

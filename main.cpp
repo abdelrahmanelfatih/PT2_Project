@@ -111,7 +111,7 @@ int main() {
             string date;
             getline(cin, date);
 
-            Schedule schedule(scheduleId, startTime, endTime, date);
+            Schedule schedule(scheduleId, date, startTime, endTime);
 
             // Create event
             Event newEvent(id, name, desc, cate, &locations[choice - 1], &coordinator, &schedule);
@@ -290,8 +290,8 @@ int userInterface() {
     int choice;
     cout << "--------------------------- Welcome to Evo Management ---------------------------" << endl;
     cout << "What would you like to do?" << endl;
-    cout << "1 - Create event\n2 - Update event (feature pending)\n3 - Enroll in an event\n4 - Generate Ticket\n 5- Event details\n 6- Generate Review";
-    cout << "(Pick 1 of the 4 options above): ";
+    cout << "1 - Create event\n2 - Update event (feature pending)\n3 - Enroll in an event\n4 - Generate Ticket\n5 - Event details\n6 - Generate Review";
+    cout << "\n(Pick 1 of the 6 options above): ";
     cin >> choice;
     return choice;
 }

@@ -24,6 +24,12 @@ public:
     // Getters
     void generateReview();
     void getReviewDetails() const;
+
+    string getReviewID() const;
+    string getReviewerName() const ;
+    int getRating() const ;
+    string getComment() const ;
+    string getTimeStamp() const ;
 };
 
 #endif 
