@@ -168,8 +168,20 @@ int main() {
             }
             break;
         }
+        case 4: { // Generate ticket
+            int j;
 
-        case 4: { // Display details
+            cout << "\nPut the eventID you want to generate its ticket: ";
+            cin >> j;
+
+            Ticket newTicket;
+            newTicket.generateTicket();
+            //newTicket.setDate(events[j].schedule->getDate());
+            events[j].addTicket(&newTicket);
+            break;
+        }
+
+        case 5: { // Display details
             int j, choice;
             cout << "Enter eventID: ";
             cin >> j;
@@ -187,16 +199,53 @@ int main() {
 
             switch(choice){
                 case 1: {
+                    cout << endl;
                     events[j].getEventDetails();
+                    cout << endl;
                     break;
                 }
                 
                 case 2: {
-                    for (const auto& audience : events[j].audiences) {
+                    for (const auto& audience : events[j].audiences){ 
+                       cout << endl;
                        audience.Audience::getParticipantDetails();
+                       cout << endl;
+                    }
+                    break;
+                }
+
+                case 3: {
+                    for (const auto& volunteer : events[j].volunteers){ 
+                       cout << endl;
+                       volunteer.Volunteer::getParticipantDetails();
+                       cout << endl;
+                    }
+                    break;
+                }
+                case 4: {
+                    for (const auto& resource : resources){
+                        cout << endl;
+                        cout << resource.checkResourceDetails() << endl;
+                    }
+                    break;
+                }
+                case 5: {
+                    for (const auto sponsor : events[j].sponsors){
+                        cout << endl;
+                        sponsor->getSponsorDetails();
+                        cout << endl;
+                    }
+                }
+                case 6: {
+                    for (const auto ticket : events[j].tickets){
+                        cout << endl;
+                        ticket->getTicketDetails();
+                        cout << endl;
+                    }
                 }
             }
-        }
+            break;
+        }   
         default:
             cout << "Invalid choice. Exiting program." << endl;
             return 1;
@@ -219,7 +268,7 @@ int userInterface() {
     int choice;
     cout << "--------------------------- Welcome to Evo Management ---------------------------" << endl;
     cout << "What would you like to do?" << endl;
-    cout << "1 - Create event\n2 - Update event (feature pending)\n3 - Enroll in an event\n4 - Event details\n";
+    cout << "1 - Create event\n2 - Update event (feature pending)\n3 - Enroll in an event\n4 - Generate Ticket\n5 - Event details\n";
     cout << "(Pick 1 of the 4 options above): ";
     cin >> choice;
     return choice;

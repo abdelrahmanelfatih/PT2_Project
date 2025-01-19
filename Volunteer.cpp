@@ -35,5 +35,5 @@ void Volunteer::getParticipantDetails() const{
     cout << "\nName: " << Participant::name;
     cout << "\nRole: " << Participant::role;
     cout << "\nTask: " << task;
-    cout << "\nWorking Hours: " << WrkHrs << endl;
+    cout << "\nWorking Hours:   " << WrkHrs << endl;
 }

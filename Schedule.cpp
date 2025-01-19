@@ -34,3 +34,7 @@ void Schedule::getScheduleDetails() const {
 string Schedule::getStartTime() const {
     return startTime;
 }
+
+string Schedule::getDate(){
+    return date;
+}

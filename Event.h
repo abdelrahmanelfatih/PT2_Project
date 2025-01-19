@@ -28,10 +28,11 @@ private:
 
     Location* location;                 
     EventCoordinator* eventcoordinator; 
-    Schedule* schedule;                 
 
 
 public:
+    Schedule* schedule;   
+                  
     vector<Audience> audiences;
     vector<Volunteer> volunteers;
     vector<Resource> resources;

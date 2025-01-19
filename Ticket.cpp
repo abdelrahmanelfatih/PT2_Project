@@ -1,27 +1,36 @@
 #include "TICKET.hpp"
 #include <string>
 #include <iostream>
+#include <string>
 using namespace std;
 
 Ticket::Ticket() : ticketID(""), Type("") ,price(0.00), date("") {}
 
-string Ticket::generateTicket(const std::string& eventID, std::string type, double price, const std::string& date) {
-    this->ticketID = eventID + type;
-    this->price = price;
-    this->date = date;
-    return ticketID;
+void Ticket::generateTicket() {
+    //! this->ticketID = eventID + type;
+    //! this->price = price;
+    //! this->date = date;
+    //! return ticketID;
+
+    cout << "Enter Ticket ID: "; cin >> ticketID;
+    cout << "Enter ticket price: "; cin >> price;
+    cout << "Enter ticket type: "; cin >> Type;
 }
 
 bool Ticket:: validateTicket(const string& ticketID) const {
     return this->ticketID == ticketID;
 }
 
-const Ticket& Ticket::getTicketDetails(const string& ticketID) const{
-    if(this->ticketID == ticketID){
-        return *this;
-    }
-    throw std::invalid_argument("Ticket ID not found.");
+void Ticket::getTicketDetails() {
+    //! if(this->ticketID == ticketID){
+    //!     return *this;
+    //! }
+    //! throw std::invalid_argument("Ticket ID not found.");
 
+    cout << "TicketID: " << ticketID << endl;
+    cout << "Price: " << price << endl;
+    cout << "Date: " << date << endl;
+    cout << "Type: " << Type << endl;
 }
 
 bool Ticket::refundTicket(const string& ticketID){
@@ -34,11 +43,16 @@ bool Ticket::refundTicket(const string& ticketID){
     return false;
 
 }
+
     std::string Ticket::getDate() {
     return this->date;
     }
 
     double Ticket::getPrice() {
     return this->price;
+    }
+
+    void Ticket::setDate(string scheduleDate){
+        date = scheduleDate;
     }
 
