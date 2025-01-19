@@ -17,6 +17,34 @@ bool Review::deleteReview() {
 }
 
 
+void generateReview() cosnt {
+
+    cout<<"Enter Review ID: ";
+    cin >> reviewID;
+    cout<<"Enter Reviewer Name: "
+    cin>> reviewerName;
+    cat;
+    cout<<"Input Rate (1-5 Stars)";
+    cin<< rating;
+    if (rating > 5 || isalpha(rating)){
+        cout<<"Invalid Rating, Please Try Again"
+        goto cat;
+    }
+    cout<<"Write your Comment: ";
+    cin<< comment;
+    cout << "Current Time? ";
+    cin<< timeStamp;
+}
+
+void getReviewDetails() const{
+    cout<<"Reviewer Name: "<< reviewerName<<endl;
+    cout<<"Review ID: "<< reviewID<<endl;
+    cout<<"Given Rating: " <<rating<<endl;
+    cout<<"Comment: "<<comment<<endl;
+    cout<<"Time of Review: "<<timeStamp<<endl;
+}
+
+
 
 string Review::getReviewID() const { return reviewID; }
 string Review::getReviewerName() const { return reviewerName; }

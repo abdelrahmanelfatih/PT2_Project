@@ -236,16 +236,29 @@ int main() {
                         cout << endl;
                     }
                 }
-                case 6: {
-                    for (const auto ticket : events[j].tickets){
+                
+                case 7: {
+                    for (const auto review : events[j].reviews){
                         cout << endl;
-                        ticket->getTicketDetails();
+                        Review.getReviewDetails
                         cout << endl;
                     }
+                
+
                 }
             }
             break;
-        }   
+        }
+
+        case 6: { // Generate Review
+        int j;
+        cout<<"Input the ID of the Event you'd like to Review: ";
+        cin<< j;
+        Review newReview;
+        newReview.generateReview();
+        events[j].addReview(&newReview);
+        break;
+        }
         default:
             cout << "Invalid choice. Exiting program." << endl;
             return 1;
@@ -268,7 +281,7 @@ int userInterface() {
     int choice;
     cout << "--------------------------- Welcome to Evo Management ---------------------------" << endl;
     cout << "What would you like to do?" << endl;
-    cout << "1 - Create event\n2 - Update event (feature pending)\n3 - Enroll in an event\n4 - Generate Ticket\n5 - Event details\n";
+    cout << "1 - Create event\n2 - Update event (feature pending)\n3 - Enroll in an event\n4 - Generate Ticket\n 5- Event details\n 6- Generate Review";
     cout << "(Pick 1 of the 4 options above): ";
     cin >> choice;
     return choice;
