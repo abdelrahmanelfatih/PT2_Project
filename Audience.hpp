@@ -21,6 +21,8 @@ public:
     void setPhoneNo(string phoneNo);
     string getEmail() const;
     string getPhoneNo() const;
+
+    void getParticipantDetails() const override;
 };
 
 #endif

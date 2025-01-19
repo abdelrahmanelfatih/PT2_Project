@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <deque>
 #include "Sponsor.hpp"
 #include "Resource.hpp"
 #include "Review.h"
@@ -21,10 +22,9 @@ void displayLocations(const vector<Location>& locations);
 int main() {
     vector<Resource> resources;
     vector<Location> locations;
-    vector<Event> events;
-    vector<Audience> audiences;
-    vector<Volunteer> volunteers;
-    vector<Sponsor> sponsors;
+    deque<Event> events;
+
+    bool loop = false;
 
     // Initialize locations
     locations.push_back(Location("1", "DSI", "UTM", 200, "Available"));
@@ -38,12 +38,15 @@ int main() {
     resources.push_back(Resource("2", "Tools", 50));
     resources.push_back(Resource("3", "Tables", 25));
 
-    // User interface
-    int input = userInterface();
     int eventCounter = 0; // Event ID counter
+    int i = 0;
+    // User interface
+    do{
+    int input = userInterface();
 
     switch (input) {
         case 1: { // Create event
+            i++;
             string id = to_string(eventCounter++);
             string name, desc, cate;
 
@@ -112,7 +115,7 @@ int main() {
 
             // Create event
             Event newEvent(id, name, desc, cate, &locations[choice - 1], &coordinator, &schedule);
-            events.push_back(newEvent);
+            events.push_front(newEvent);
 
             cout << "Event created successfully with ID: " << id << endl;
 
@@ -127,6 +130,7 @@ int main() {
             cout << "Enter Sponsor info: " << endl;
             Sponsor sponsor1;
             sponsor1.addSponsor();
+            events[0].addSponsor(&sponsor1);
             break;
             }
             cout<< "Understandable have a nice day!" << endl;
@@ -150,16 +154,13 @@ int main() {
                     Audience newAudience;
                     newAudience.Audience::registerParticipant();
                     events[eventID].addAudience(newAudience);
-
-                    //! audiences.push_back(newAudience);
-                    //! audiences[0].Audience::registerParticipant(EventID);
                     break;
                 }
 
                 if (participantType == 'v') {
                     Volunteer newVolunteer;
-                    volunteers.push_back(newVolunteer);
-                    volunteers[0].Volunteer::registerParticipant();
+                    newVolunteer.Volunteer::registerParticipant();
+                    events[eventID].addVolunteer(newVolunteer);
                     break;
                 }
 
@@ -167,13 +168,48 @@ int main() {
             }
             break;
         }
+
+        case 4: { // Display details
+            int j, choice;
+            cout << "Enter eventID: ";
+            cin >> j;
+            cout << endl;
+            
+            cout << "What do you want the detail of?" << endl;
+            cout << "Event in general (1)\n";
+            cout << "Audience (2)\n";
+            cout << "Volunteer (3)\n";
+            cout << "Resources (4)\n";
+            cout << "Sponsor (5)\n";
+            cout << "Ticket (6)\n";
+            cout << "Review (7)\nYour choice: ";
+            cin >> choice;
+
+            switch(choice){
+                case 1: {
+                    events[j].getEventDetails();
+                    break;
+                }
+                
+                case 2: {
+                    for (const auto& audience : events[j].audiences) {
+                       audience.Audience::getParticipantDetails();
+                }
+            }
+        }
         default:
             cout << "Invalid choice. Exiting program." << endl;
             return 1;
     }
 
-    cout << "Press Enter to continue...";
-    cin.get();
+    cout << "Would you like to exit the program(Y/N)";
+    char a;
+    cin >> a;
+    if(toupper(a) == 'Y')
+        loop = false;
+    else
+        loop = true;
+    } while(loop);
 
     system("pause");
     return 0;
@@ -183,8 +219,8 @@ int userInterface() {
     int choice;
     cout << "--------------------------- Welcome to Evo Management ---------------------------" << endl;
     cout << "What would you like to do?" << endl;
-    cout << "1 - Create event\n2 - Update event (feature pending)\n3 - Enroll in an event\n";
-    cout << "(Pick 1 of the 3 options above): ";
+    cout << "1 - Create event\n2 - Update event (feature pending)\n3 - Enroll in an event\n4 - Event details\n";
+    cout << "(Pick 1 of the 4 options above): ";
     cin >> choice;
     return choice;
 }
@@ -198,5 +234,6 @@ void displayLocations(const vector<Location>& locations) {
     for (int i = 0; i < locations.size(); ++i) {
         cout << i + 1 << " - Location[" << i << "]: ";
         locations[i].getLocationDetails();
+        cout << endl;
     }
 }

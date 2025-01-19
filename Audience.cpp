@@ -30,3 +30,11 @@ void Audience::registerParticipant(){
     string Audience::getPhoneNo() const{
         return phoneNo;
 }
+
+void Audience::getParticipantDetails() const{
+    cout << "Participant ID: " << Participant::participantID;
+    cout << "\nName: " << Participant::name;
+    cout << "\nRole: " << Participant::role;
+    cout << "\nEmail: " << email;
+    cout << "\nphoneNo: " << phoneNo << endl;
+}

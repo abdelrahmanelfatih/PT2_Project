@@ -29,3 +29,11 @@ string Volunteer::getTask() const {
 double Volunteer::getWorkingHours() const {
     return WrkHrs;
 }
+
+void Volunteer::getParticipantDetails() const{
+    cout << "Participant ID: " << Participant::participantID;
+    cout << "\nName: " << Participant::name;
+    cout << "\nRole: " << Participant::role;
+    cout << "\nTask: " << task;
+    cout << "\nWorking Hours: " << WrkHrs << endl;
+}

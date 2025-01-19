@@ -65,7 +65,6 @@ void Event::addResource(const Resource& resource){
 void Event::addNotification(Notification* notification){
     notifications.push_back(notification);
 }
-
 void Event::addReview(Review* review){
     reviews.push_back(review);
 }

@@ -22,6 +22,8 @@ public:
     void setWorkingHours(double hours);
     string getTask() const;
     double getWorkingHours() const;
+
+    void getParticipantDetails() const override;
 };
 
 #endif

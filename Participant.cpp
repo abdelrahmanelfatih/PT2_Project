@@ -22,14 +22,14 @@ bool Participant::updateParticipantRole(const string& participantID, const strin
     return false;
 }
 
-Participant Participant::getParticipantDetails(const string& participantID) const {
-    if (this->participantID == participantID) {
-        cout << "Fetching details for participant with ID: " << participantID << endl;
-        return *this; // Return the current object
-    }
-    cout << "Participant with ID " << participantID << " not found." << endl;
-    return Participant("", "", ""); // Return an empty participant object
-}
+// Participant Participant::getParticipantDetails() const {
+    // if (this->participantID == participantID) {
+    //     cout << "Fetching details for participant with ID: " << participantID << endl;
+    //     return *this; // Return the current object
+    // }
+    // cout << "Participant with ID " << participantID << " not found." << endl;
+    // return Participant("", "", ""); // Return an empty participant object
+//}
 
 
 string Participant::getParticipantRole() const {

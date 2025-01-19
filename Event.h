@@ -30,6 +30,8 @@ private:
     EventCoordinator* eventcoordinator; 
     Schedule* schedule;                 
 
+
+public:
     vector<Audience> audiences;
     vector<Volunteer> volunteers;
     vector<Resource> resources;
@@ -37,8 +39,6 @@ private:
     vector<Ticket*> tickets;
     vector<Review*> reviews;
     vector<Notification*> notifications;
-
-public:
     
     Event(string id, string name, string desc, string cat, 
           Location* loc, EventCoordinator* coord, Schedule* sched)

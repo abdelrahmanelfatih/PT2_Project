@@ -21,7 +21,7 @@ public:
 
     bool updateParticipantRole(const string& participantID, const string& newRole);
 
-    Participant getParticipantDetails(const string& participantID) const;
+    virtual void getParticipantDetails() const = 0;
 
     string getParticipantRole() const;
 
