@@ -1,4 +1,9 @@
 #include "Review.h"
+#include <iostream>
+#include <string>
+using namespace std;
+
+Review::Review(){};
 
 Review::Review(const string& id, const string& name, int rate, const string& comm, const string& time)
     : reviewID(id), reviewerName(name), rating(rate), comment(comm), timeStamp(time) {}
@@ -17,26 +22,26 @@ bool Review::deleteReview() {
 }
 
 
-void generateReview() cosnt {
+void Review::generateReview() {
 
     cout<<"Enter Review ID: ";
     cin >> reviewID;
-    cout<<"Enter Reviewer Name: "
-    cin>> reviewerName;
-    cat;
+    cout<<"Enter Reviewer Name: ";
+    cin >> reviewerName;
+    cat:
     cout<<"Input Rate (1-5 Stars)";
-    cin<< rating;
+    cin >> rating;
     if (rating > 5 || isalpha(rating)){
-        cout<<"Invalid Rating, Please Try Again"
+        cout<<"Invalid Rating, Please Try Again";
         goto cat;
     }
     cout<<"Write your Comment: ";
-    cin<< comment;
+    cin >> comment;
     cout << "Current Time? ";
-    cin<< timeStamp;
+    cin >> timeStamp;
 }
 
-void getReviewDetails() const{
+void Review::getReviewDetails() const{
     cout<<"Reviewer Name: "<< reviewerName<<endl;
     cout<<"Review ID: "<< reviewID<<endl;
     cout<<"Given Rating: " <<rating<<endl;

@@ -235,12 +235,21 @@ int main() {
                         sponsor->getSponsorDetails();
                         cout << endl;
                     }
+                    break;
+                }
+                case 6: {
+                    for (const auto ticket : events[j].tickets){
+                        cout << endl;
+                        ticket->getTicketDetails();
+                        cout << endl;
+                    }
+                    break;
                 }
                 
                 case 7: {
                     for (const auto review : events[j].reviews){
                         cout << endl;
-                        Review.getReviewDetails
+                        review->getReviewDetails();
                         cout << endl;
                     }
                 
@@ -253,7 +262,7 @@ int main() {
         case 6: { // Generate Review
         int j;
         cout<<"Input the ID of the Event you'd like to Review: ";
-        cin<< j;
+        cin >> j;
         Review newReview;
         newReview.generateReview();
         events[j].addReview(&newReview);

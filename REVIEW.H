@@ -13,6 +13,8 @@ private:
     string timeStamp;
 
 public:
+    Review();
+
     Review(const string& id, const string& name, int rate, const string& comm, const string& time);
 
     string submitReview() const;
@@ -20,7 +22,7 @@ public:
 
 
     // Getters
-    void generateReview() const;
+    void generateReview();
     void getReviewDetails() const;
 };
 
