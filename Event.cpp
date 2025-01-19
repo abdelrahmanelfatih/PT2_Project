@@ -9,12 +9,12 @@ string Event::getID() const {
 }
 
 void Event::updateEventDetails(string id, string name, string desc, string cat) {
-    eventID = id;
-    this->name = name;
-    description = desc;
-    category = cat;
-    std::cout << "Event details updated successfully!" << std::endl;
-    
+    if (!id.empty()) eventID = id;
+    if (!name.empty()) this->name = name;
+    if (!desc.empty()) description = desc;
+    if (!cat.empty()) category = cat; 
+
+    std::cout << "Location details updated." << std::endl;
 }
 
 void Event::getEventDetails() const {
