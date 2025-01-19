@@ -7,14 +7,11 @@ using namespace std;
 Ticket::Ticket() : ticketID(""), Type("") ,price(0.00), date("") {}
 
 void Ticket::generateTicket() {
-    //! this->ticketID = eventID + type;
-    //! this->price = price;
-    //! this->date = date;
-    //! return ticketID;
 
     cout << "Enter Ticket ID: "; cin >> ticketID;
     cout << "Enter ticket price: "; cin >> price;
     cout << "Enter ticket type: "; cin >> Type;
+    cout << "Enter ticket date: "; cin >> date;
 }
 
 bool Ticket:: validateTicket(const string& ticketID) const {
@@ -22,10 +19,6 @@ bool Ticket:: validateTicket(const string& ticketID) const {
 }
 
 void Ticket::getTicketDetails() {
-    //! if(this->ticketID == ticketID){
-    //!     return *this;
-    //! }
-    //! throw std::invalid_argument("Ticket ID not found.");
 
     cout << "TicketID: " << ticketID << endl;
     cout << "Price: " << price << endl;

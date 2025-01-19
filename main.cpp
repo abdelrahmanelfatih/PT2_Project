@@ -159,13 +159,13 @@ int main() {
                 string name, desc, cat;
 
                 cin.ignore(); // Clear the input buffer for getline
-                cout << "Enter updated name: (press enter if there is no update): ";
+                cout << "Enter updated name: (press enter if there is no update) ";
                 getline(cin, name);
 
-                cout << "Enter updated description: ";
+                cout << "Enter updated description: (press enter if there is no update) ";
                 getline(cin, desc);
 
-                cout << "Enter updated category: ";
+                cout << "Enter updated category: (press enter if there is no update) ";
                 getline(cin, cat);
 
                 // Update the event using the collected details
@@ -173,7 +173,8 @@ int main() {
 
                 cout << "Event updated successfully!" << endl;
                 }
-                cout << "No event available to update " << endl;
+
+
             }
             break;
 
@@ -382,7 +383,7 @@ int userInterface() {
     int choice;
     cout << "--------------------------- Welcome to Evo Management ---------------------------" << endl;
     cout << "What would you like to do?" << endl;
-    cout << "1 - Create event\n2 - Update event (feature pending)\n3 - Enroll in an event\n4 - Generate Ticket\n5 - Event details\n6 - Generate Review\n7 - Generate Notification\n8 - Allocate Resources";
+    cout << "1 - Create event\n2 - Update event\n3 - Enroll in an event\n4 - Generate Ticket\n5 - Event details\n6 - Generate Review\n7 - Generate Notification\n8 - Allocate Resources";
     cout << "\n(Pick 1 of the 8 options above): ";
     cin >> choice;
     return choice;
@@ -403,8 +404,8 @@ void displayLocations(const vector<Location>& locations) {
 
 bool displayEvents(const deque<Event>& events) {
     if (events.empty()) {
-        cout << "No events available." << endl;
-        return false;
+        cout << "No event available to update " << endl;
+        return false; //returns false if events is empty
     }
 
     for (int i = 0; i < events.size(); ++i) {

@@ -31,7 +31,7 @@ void Review::generateReview() {
     getline(cin, reviewerName);
 
     cat:
-    cout<<"Input Rate (1-5 Stars)";
+    cout<<"Input Rate (1-5 Stars): ";
     cin >> rating;
 
     if (rating > 5 || isalpha(rating)){
