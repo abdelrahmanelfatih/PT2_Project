@@ -12,9 +12,9 @@ class Ticket{
 
     public:
         Ticket();
-        std::string generateTicket(const std::string& eventID, std::string type, double price, const std::string& date);
+        void generateTicket();
         bool validateTicket(const std::string& ticketID) const;
-        const Ticket& getTicketDetails(const std::string& ticketID) const;
+        void getTicketDetails();
         bool refundTicket(const std::string& ticketID);
 
         std::string getType();
@@ -23,6 +23,7 @@ class Ticket{
         std::string getTicketID();
         std::string getDate();
 
+        void setDate(std::string scheduleDate);
         void setType();
         void setPrice(double price);
 

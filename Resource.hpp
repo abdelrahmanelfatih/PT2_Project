@@ -7,16 +7,20 @@ using namespace std;
 
 class Resource {
 private:
-    string resourceID;
+    int resourceID;
     string type;
     int quantity;
 
 public:
-    Resource(const string& id, const string& type, int quantity);
+    Resource(int id, const string& type, int quantity);
 
     void addResource(int q);
     bool allocateResource(int amount);
     string checkResourceDetails() const;
+
+    int getID() const;
+    string getType() const;
+    int getQuantity() const;
 };
 
 #endif

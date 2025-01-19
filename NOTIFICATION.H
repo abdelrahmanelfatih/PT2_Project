@@ -11,7 +11,12 @@ private:
     string timeStamp;
 
 public:
+    Notification();
+
     Notification(const string& id, const string& msg, const string& time);
+
+    void generateNotification();
+    void getNotificationDetails();
 
     string sendMessage() const;
     void setMessage(const string& msg);

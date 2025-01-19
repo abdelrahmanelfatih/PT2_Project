@@ -2,7 +2,7 @@
 #include <iostream>
 #include <map>
 
-EventCoordinator::EventCoordinator() : coordinatorID(""), name(""), email("") {}
+EventCoordinator::EventCoordinator(std::string id, std::string name, std::string email) : coordinatorID(id), name(name), email(email) {}
 
 
 void EventCoordinator::assignCoordinator(const std::string& name, const std::string& email) {
@@ -15,10 +15,9 @@ void EventCoordinator::assignCoordinator(const std::string& name, const std::str
 }
 
 
-std::map<std::string, std::string> EventCoordinator::getCoordinatorDetails() const {
-    return {
-        {"Coordinator ID", coordinatorID},
-        {"Name", name},
-        {"Email", email}
-    };
+void EventCoordinator::getCoordinatorDetails() const {
+    std::cout << "Event Coordinator Details:" << std::endl;
+    std::cout << "ID: " << coordinatorID << std::endl;
+    std::cout << "Start time: " << name << std::endl;
+    std::cout << "End time: " << email << std::endl;
 }
