@@ -77,7 +77,6 @@ public:
     string createEvent();
     void updateEventDetails(string id, string name, string desc, string cat);
     void getEventDetails() const;
-
     void addVolunteer(const Volunteer& volunteer);
     void addAudience(const Audience& audience);
     void addSponsor(Sponsor* sponsor);

@@ -18,6 +18,7 @@ using namespace std;
 
 int userInterface();
 void displayLocations(const vector<Location>& locations);
+bool displayEvents(const deque<Event>& events);
 
 int main() {
     vector<Resource> resources;
@@ -43,7 +44,6 @@ int main() {
     // User interface
     do{
     int input = userInterface();
-
     switch (input) {
         case 1: { // Create event
             i++;
@@ -68,7 +68,7 @@ int main() {
             int choice;
             cin >> choice;
 
-            if (choice < 1 || choice > locations.size()) {
+            if (choice < 1 || choice > locations.size() || cin.fail()) {
                 cout << "Invalid input, please try again." << endl;
                 return 1;
             }
@@ -137,15 +137,57 @@ int main() {
             break;
         }
         
+
+        case 2:
+            cout<<"Would you like to update event information? (Y/N)";
+            char in;
+            cin >> in;
+            if (toupper(in) == 'Y') {
+                
+                
+                if(displayEvents(events)){
+                int temp = 0; 
+                cout << "Choose an event to update: ";
+                cin >> temp;
+
+                if (temp < 1 || temp > events.size()) { // error handling 
+                    cout << "Invalid event number. Please try again." << endl;
+                    return 1; // Exit if input is invalid
+                }
+
+                string id = to_string(temp - 1); // Convert to zero-based index
+                string name, desc, cat;
+
+                cin.ignore(); // Clear the input buffer for getline
+                cout << "Enter updated name: (press enter if there is no update) ";
+                getline(cin, name);
+
+                cout << "Enter updated description: (press enter if there is no update) ";
+                getline(cin, desc);
+
+                cout << "Enter updated category: (press enter if there is no update) ";
+                getline(cin, cat);
+
+                // Update the event using the collected details
+                events[stoi(id)].updateEventDetails(id, name, desc, cat);
+
+                cout << "Event updated successfully!" << endl;
+                }
+
+
+            }
+            break;
+
         case 3: { // Enroll in an event
             while (true) {
                 char participantType;
+
+
                 int eventID;
                 string EventID;
 
                 cout << "Put the eventID you want to participate: ";
                 cin >> eventID;
-                //!EventID = to_string(eventID);
 
                 cout << "What do you want to be? (type 'a' for audience and 'v' for volunteer): ";
                 cin >> participantType;
@@ -320,6 +362,7 @@ int main() {
 
         default:
             cout << "Invalid choice. Exiting program." << endl;
+            system("pause");
             return 1;
     }
 
@@ -340,7 +383,7 @@ int userInterface() {
     int choice;
     cout << "--------------------------- Welcome to Evo Management ---------------------------" << endl;
     cout << "What would you like to do?" << endl;
-    cout << "1 - Create event\n2 - Update event (feature pending)\n3 - Enroll in an event\n4 - Generate Ticket\n5 - Event details\n6 - Generate Review\n7 - Generate Notification\n8 - Allocate Resources";
+    cout << "1 - Create event\n2 - Update event\n3 - Enroll in an event\n4 - Generate Ticket\n5 - Event details\n6 - Generate Review\n7 - Generate Notification\n8 - Allocate Resources";
     cout << "\n(Pick 1 of the 8 options above): ";
     cin >> choice;
     return choice;
@@ -357,4 +400,18 @@ void displayLocations(const vector<Location>& locations) {
         locations[i].getLocationDetails();
         cout << endl;
     }
+}
+
+bool displayEvents(const deque<Event>& events) {
+    if (events.empty()) {
+        cout << "No event available to update " << endl;
+        return false; //returns false if events is empty
+    }
+
+    for (int i = 0; i < events.size(); ++i) {
+        cout << i + 1 << " - Event[" << i << "]: ";
+        events[i].getEventDetails();
+        cout << endl;
+    }
+    return true;
 }
